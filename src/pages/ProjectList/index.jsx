@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import * as qs from "qs";
 import { ProjectSearch } from "./ProjectSearch";
 import { ProjectTable } from "./ProjectTable";
+import { clearObject } from "../../utils";
 const baseApiUrl = process.env.REACT_APP_API_URL;
 export const ProjectList = () => {
   const [searchParam, setSearchParam] = useState({
@@ -10,22 +12,26 @@ export const ProjectList = () => {
   const [personList, setPersonList] = useState([]);
   const [tableData, setTableData] = useState([]);
 
+  // 查找 personList
   useEffect(() => {
     fetch(`${baseApiUrl}/users`).then(async (res) => {
-      console.log(res,baseApiUrl);
       if (res.ok) {
         setPersonList(await res.json());
       }
     });
   }, []);
 
+  // 查找表格内容
   useEffect(() => {
-    fetch(`${baseApiUrl}/projects`).then(async res =>{
+    fetch(
+      `${baseApiUrl}/projects?${qs.stringify(clearObject(searchParam))}`
+    ).then(async (res) => {
       if (res.ok) {
-        setTableData(await res.json())
+        setTableData(await res.json());
       }
-    })
-  }, [searchParam])
+    });
+  }, [searchParam]);
+
   return (
     <div>
       <ProjectSearch
@@ -33,7 +39,7 @@ export const ProjectList = () => {
         setSearchParam={setSearchParam}
         personList={personList}
       />
-      <ProjectTable tableData={tableData} personList={personList}/>
+      <ProjectTable tableData={tableData} personList={personList} />
     </div>
   );
 };

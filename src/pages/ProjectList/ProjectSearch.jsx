@@ -1,7 +1,6 @@
 import React from "react";
 
-export const ProjectSearch = ({searchParam,setSearchParam,personList}) => {
- 
+export const ProjectSearch = ({ searchParam, setSearchParam, personList }) => {
   return (
     <form>
       <div>
@@ -25,7 +24,9 @@ export const ProjectSearch = ({searchParam,setSearchParam,personList}) => {
           }}
         >
           {personList.map((item) => (
-            <option key={item.id} value={item.id}>{item.name}</option>
+            <option key={item.id} value={item.id}>
+              {item.name}
+            </option>
           ))}
         </select>
       </div>

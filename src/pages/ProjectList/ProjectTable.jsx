@@ -1,7 +1,6 @@
 import React from "react";
 
-export const ProjectTable = ({ tableData,personList }) => {
- console.log(personList);
+export const ProjectTable = ({ tableData, personList }) => {
   return (
     <table>
       <thead>
@@ -14,7 +13,10 @@ export const ProjectTable = ({ tableData,personList }) => {
         {tableData.map((item) => (
           <tr key={item.id}>
             <td>{item.name}</td>
-            <td>{personList.find(person=>person.id===item.personId)?.name||"/" }</td>
+            <td>
+              {personList.find((person) => person.id === item.personId)?.name ||
+                "/"}
+            </td>
           </tr>
         ))}
       </tbody>
