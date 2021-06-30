@@ -1,6 +1,18 @@
 import React from "react";
-
-export const ProjectSearch = ({ searchParam, setSearchParam, personList }) => {
+import type { Person } from "./projectList.d";
+interface ProjectSearchProps {
+  searchParam: {
+    name: string;
+    personId: string;
+  };
+  setSearchParam: (params: ProjectSearchProps["searchParam"]) => void;
+  personList: Person[];
+}
+export const ProjectSearch = ({
+  searchParam,
+  setSearchParam,
+  personList,
+}: ProjectSearchProps) => {
   return (
     <form>
       <input

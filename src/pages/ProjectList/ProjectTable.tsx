@@ -1,6 +1,11 @@
 import React from "react";
+import type { Person, Project } from "./projectList.d";
 
-export const ProjectTable = ({ tableData, personList }) => {
+interface ProjectTableProps {
+  tableData: Project[];
+  personList: Person[];
+}
+export const ProjectTable = ({ tableData, personList }: ProjectTableProps) => {
   return (
     <table>
       <thead>

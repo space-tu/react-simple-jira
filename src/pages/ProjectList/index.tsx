@@ -21,7 +21,7 @@ export const ProjectList = () => {
       }
     });
   });
-  const debounceSearchParam = useDebounce(searchParam, 2000);
+  const debounceSearchParam = useDebounce(searchParam, 200);
   // 查找表格内容
   useEffect(() => {
     fetch(
