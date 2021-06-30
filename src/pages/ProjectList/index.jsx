@@ -33,13 +33,13 @@ export const ProjectList = () => {
   }, [searchParam]);
 
   return (
-    <div>
+    <>
       <ProjectSearch
         searchParam={searchParam}
         setSearchParam={setSearchParam}
         personList={personList}
       />
       <ProjectTable tableData={tableData} personList={personList} />
-    </div>
+    </>
   );
 };
